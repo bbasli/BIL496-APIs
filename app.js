@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 
 const authRoutes = require("./routes/auth");
+const earthquakeRoutes = require("./routes/earthquake");
 
 const app = express();
 dotenv.config();
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/earthquake", earthquakeRoutes);
 
 app.use((error, req, res, next) => {
   console.log("error middleware :(", error);
