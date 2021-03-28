@@ -19,10 +19,6 @@ const locationSchema = new Schema({
     type: Number,
     required: true,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
 });
 
 module.exports = mongoose.model("Location", locationSchema);
