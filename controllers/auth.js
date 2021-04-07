@@ -79,7 +79,7 @@ exports.login = (req, res, next) => {
         message: "Logged in successfully.",
         data: {
           userId: loadedUser._id.toString(),
-          user: { loadedUser },
+          user: loadedUser,
           token: token,
         },
       });
