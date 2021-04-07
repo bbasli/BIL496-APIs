@@ -71,7 +71,7 @@ exports.login = (req, res, next) => {
           email: loadedUser.email,
           userId: loadedUser._id.toString(),
         },
-        "somesupersecretsecretkey",
+        "somesecretkey",
         { expiresIn: "6h" }
       );
 
@@ -79,6 +79,7 @@ exports.login = (req, res, next) => {
         message: "Logged in successfully.",
         data: {
           userId: loadedUser._id.toString(),
+          user: { loadedUser },
           token: token,
         },
       });
