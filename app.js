@@ -12,6 +12,7 @@ const locationRoutes = require("./routes/location");
 const fireRoutes = require("./routes/fire");
 const floodRoutes = require("./routes/flood");
 const commentRoutes = require("./routes/comment");
+const emergencyRoutes = require("./routes/emergency");
 
 const app = express();
 dotenv.config();
@@ -38,6 +39,7 @@ app.use("/api/location", locationRoutes);
 app.use("/api/fire", fireRoutes);
 app.use("/api/flood", floodRoutes);
 app.use("/api/comment", commentRoutes);
+app.use("/api/emergency", emergencyRoutes);
 
 app.use((error, req, res, next) => {
   console.log("error middleware :(", error);
