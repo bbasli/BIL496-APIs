@@ -14,6 +14,8 @@ const floodRoutes = require("./routes/flood");
 const commentRoutes = require("./routes/comment");
 const emergencyRoutes = require("./routes/emergency");
 
+const disasters = require("./js/getDisasters.js");
+
 const app = express();
 dotenv.config();
 
@@ -53,15 +55,18 @@ app.use((req, res, next) => {
   res.send("No data to show/send");
 });
 
+const fiveMinutes = 5 * 60 * 1000;
+
 mongoose
   .connect(
     `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@mycluster.i3aby.mongodb.net/${process.env.MONGO_DBNAME}?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then((res) => {
-    console.log("CONNECTED TO DATABASE");
+    setInterval(() => {
+      disasters.getEarthquakeRecords();
+      disasters.getFireRecords();
+    }, fiveMinutes);
     app.listen(process.env.PORT || 3000);
   })
-  .catch((err) => {
-    console.log("DBConnection Error", err);
-  });
+  .catch((err) => {});

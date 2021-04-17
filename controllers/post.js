@@ -43,6 +43,7 @@ exports.addPost = (req, res, next) => {
   const title = req.body.title;
   const content = req.body.content;
   const imageUrl = req.body.imageUrl;
+  const authorName = req.body.authorName;
   let author;
 
   const post = new Post({
@@ -50,6 +51,7 @@ exports.addPost = (req, res, next) => {
     content: content,
     imageUrl: imageUrl,
     author: req.body.userId,
+    authorName: authorName,
   });
 
   post
