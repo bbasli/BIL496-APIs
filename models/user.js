@@ -17,11 +17,10 @@ const userSchema = new Schema(
     },
     name: {
       type: String,
-      required: true,
     },
     gender: {
       type: String,
-      required: true,
+      default: "M",
     },
     locations: [
       {
@@ -31,7 +30,6 @@ const userSchema = new Schema(
     ],
     phoneNumber: {
       type: Number,
-      required: true,
     },
     posts: [
       {
